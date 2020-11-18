@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import employees from "../../employees.json"
+import React from "react";
+import Table from "../Table";
 
 function Directory() {
     return (
-        <div>
-            Directory
+        <div className="container">
+            <Table />
         </div>
     )
 }
