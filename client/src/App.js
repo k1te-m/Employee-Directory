@@ -11,11 +11,11 @@ import './App.css';
 function App() {
   return (
     <Router>
-      <div>
+      
         <Navbar />
         <Route exact path="/" component={Home} />
         <Route exact path="/directory" component={Directory} />
-      </div>
+     
     </Router>
   );
 }
