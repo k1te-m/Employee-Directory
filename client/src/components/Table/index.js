@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import employees from "../../employees.json"
-import TableData from "../TableData";
 
 function Table() {
     const [tableState, setTableState] = useState({
