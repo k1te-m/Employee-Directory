@@ -14,6 +14,10 @@ function Table() {
   });
   return (
     <div className="container">
+      <form className="form-inline">
+        <label for="search">Search:</label>
+        <input type="text" className="form-control" id="search"></input>
+      </form>
       <table>
         <thead>
           <th scope="col">Photo</th>
