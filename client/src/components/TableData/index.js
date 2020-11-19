@@ -1,25 +1,21 @@
 import React from "react";
 
 function TableData(props) {
-  let employees = props.data.results;
-  return employees.map((employee) => {
-    return (
-      <React.Fragment>
-        <tr>
-          <td>
-            <img src={employee.picture.thumbnail} alt={employee.name.first}></img>
-          </td>
-          <td>
-            {employee.name.first} {employee.name.last}
-          </td>
-          <td>{employee.location.country}</td>
-          <td>{employee.email}</td>
-          <td>{employee.phone}</td>
-          <td>{employee.dob.date}</td>
-        </tr>
-      </React.Fragment>
-    );
-  });
+  console.log(props.value);
+  return (
+    <React.Fragment>
+      <tr>
+        <td>
+          <img src={props.value.picture.thumbnail}></img>
+        </td>
+        <td>{props.value.name.first} {props.value.name.last}</td>
+        <td>{props.value.location.country}</td>
+        <td>{props.value.email}</td>
+        <td>{props.value.phone}</td>
+        <td>{props.value.dob.date}</td>
+      </tr>
+    </React.Fragment>
+  );
 }
 
 export default TableData;
