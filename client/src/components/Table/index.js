@@ -1,26 +1,27 @@
 import React, { useState } from "react";
-import employees from "../../employees.json"
+import employees from "../../employees.json";
+import TableData from "../TableData";
 
 function Table() {
-    const [tableState, setTableState] = useState({
-        employees: employees
-    })
-    return (
+  const [tableState, setTableState] = useState({
+    employees: employees,
+  });
+  
+  return (
     <table>
-        <thead>
-            <th scope="col">Name</th>
-            <th scope="col">Country</th>
-            <th scope="col">Email</th>
-            <th scope="col">Phone Number</th>
-            <th scope="col">Date of Birth</th>
-        </thead>
-        <tbody>
-            <tr>
-               
-            </tr>
-        </tbody>
+      <thead>
+        <th scope="col">Photo</th>
+        <th scope="col">Name</th>
+        <th scope="col">Country</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone Number</th>
+        <th scope="col">Date of Birth</th>
+      </thead>
+      <tbody>
+          <TableData data={tableState.employees}  />
+      </tbody>
     </table>
-    )
+  );
 }
 
 export default Table;
