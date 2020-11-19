@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import API from "../../utils/API";
 import TableData from "../TableData";
 
+let tableDatas;
+
 function Table() {
   const [tableState, setTableState] = useState({
     employees: [],
@@ -34,15 +36,23 @@ function Table() {
       });
     } else {
       setTableState({
-        employees: filteredEmps,
+        ...tableState,
         filteredData: filteredEmps
       })
     }
   };
 
-  const tableDatas = tableState.employees.map((employee) => {
-    return <TableData key={employee.id.value} value={employee} />;
-  });
+  
+  // Conditional statement for if userFilter, map filteredData, if no filter map tablestate.employees
+  if (tableState.filteredData.length > 0) {
+    tableDatas = tableState.filteredData.map((employee) => {
+      return <TableData key={employee.id.value} value={employee}/>
+    })
+  } else {
+    tableDatas = tableState.employees.map((employee) => {
+      return <TableData key={employee.id.value} value={employee}/>
+    })
+  }
 
   return (
     <div className="container">
