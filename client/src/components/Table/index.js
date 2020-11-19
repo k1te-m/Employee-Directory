@@ -5,9 +5,21 @@ import TableData from "../TableData";
 function Table() {
   const [tableState, setTableState] = useState({
     employees: employeeList,
+    filteredData: []
   });
 
-  const employees = tableState.employees.results;
+  let employees = tableState.employees.results;
+
+  const handleSearchChange = (event) => {
+    console.log(event.target.value);
+    const { value } = event.target;
+    setTableState({
+      employees: employeeList,
+      filteredData: value
+    })
+  }
+
+  
 
   const tableDatas = employees.map((employee) => {
     return <TableData key={employee.id.value} value={employee} />;
@@ -15,8 +27,8 @@ function Table() {
   return (
     <div className="container">
       <form className="form-inline">
-        <label for="search">Search:</label>
-        <input type="text" className="form-control" id="search"></input>
+        <label>Search:</label>
+        <input type="text" className="form-control" id="search" onChange ={handleSearchChange}></input>
       </form>
       <table>
         <thead>
