@@ -24,8 +24,9 @@ function Table() {
       return values.indexOf(userFilter.toLowerCase()) !== -1;
     });
     console.log(userFilter);
+    console.log(typeof userFilter);
 
-    if (!userFilter) {
+    if (userFilter === "") {
       setTableState({
         ...tableState,
         filteredData: filteredEmps,
