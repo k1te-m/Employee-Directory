@@ -1,16 +1,17 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Table from "./components/Table";
+import Header from "./components/Header";
 import "./App.css";
 
 
 
 function App() {
   return (
-    <Router>
-      <Route exact path="/" component={Table}/>
-    </Router>
+    <React.Fragment>
+      <Header/>
+      <Table/>
+    </React.Fragment>
   );
 }
 
