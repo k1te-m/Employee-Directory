@@ -4,8 +4,7 @@ function TableData(props) {
   const { thumbnail } = props.value.picture;
   const { first, last } = props.value.name;
   const { email, phone } = props.value;
-  const { country } = props.value.location;
-  const { date } = props.value.dob;
+  const { country, city, state } = props.value.location;
   return (
     <React.Fragment>
       <tr>
@@ -13,10 +12,10 @@ function TableData(props) {
           <img src={thumbnail} alt={`${first} ${last}`}></img>
         </td>
         <td>{first} {last}</td>
+        <td>{city}, {state}</td>
         <td>{country}</td>
         <td>{email}</td>
         <td>{phone}</td>
-        <td>{date}</td>
       </tr>
     </React.Fragment>
   );
