@@ -8,39 +8,34 @@ function Table() {
     filteredData: [],
   });
 
-  // let employees = tableState.employees.results;
-
   useEffect(() => {
-    API.getEmployees().then(results => {
-         setTableState({
-           employees: results.data.results,
-           filteredData: results.data.results
-         });
-       });
+    API.getEmployees().then((results) => {
+      setTableState({
+        employees: results.data.results,
+        filteredData: results.data.results,
+      });
+    });
   }, [tableState.employees.length === 0]);
 
-
-  console.log(tableState.employees);
-
   const handleSearchChange = (event) => {
-    console.log(event.target.value);
     const userFilter = event.target.value;
-    const filteredEmps = tableState.employees.filter(emps => {
+    const filteredEmps = tableState.employees.filter((emps) => {
       let values = emps.name.first.toLowerCase();
-      console.log(values.indexOf(userFilter.toLowerCase()))
       return values.indexOf(userFilter.toLowerCase()) !== -1;
-    })
+    });
+    console.log(userFilter);
 
-    setTableState({
-      ...tableState,
-      filteredData: filteredEmps
-    })
-    // // const { value } = event.target;
-
-    // setTableState({
-    //   employees: [],
-    //   filteredData: [],
-    // });
+    if (!userFilter) {
+      setTableState({
+        ...tableState,
+        filteredData: filteredEmps,
+      });
+    } else {
+      setTableState({
+        employees: filteredEmps,
+        filteredData: filteredEmps
+      })
+    }
   };
 
   const tableDatas = tableState.employees.map((employee) => {
@@ -49,7 +44,10 @@ function Table() {
 
   return (
     <div className="container">
-      <form className="form-inline">
+      <form
+        className="form-inline"
+        onSubmit={(event) => event.preventDefault()}
+      >
         <label>Search:</label>
         <input
           type="text"
