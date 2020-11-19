@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import API from "../../utils/API";
 import TableData from "../TableData";
 
+
 let tableDatas;
 
 function Table() {
@@ -9,6 +10,7 @@ function Table() {
     employees: [],
     filteredData: [],
   });
+  const [sortedField, setSortedField] = useState(null);
 
   useEffect(() => {
     API.getEmployees().then((results) => {
@@ -26,8 +28,6 @@ function Table() {
       let values = emps.name.first.toLowerCase();
       return values.indexOf(userFilter.toLowerCase()) !== -1;
     });
-    console.log(userFilter);
-    console.log(typeof userFilter);
 
     if (userFilter === "") {
       setTableState({
@@ -43,12 +43,13 @@ function Table() {
   };
 
   
+  
   // Conditional statement for if userFilter, map filteredData, if no filter map tablestate.employees
   if (tableState.filteredData.length > 0) {
     tableDatas = tableState.filteredData.map((employee) => {
       return <TableData key={employee.id.value} value={employee}/>
     })
-  } else {
+  } else if (tableState.filteredData.length === 0) {
     tableDatas = tableState.employees.map((employee) => {
       return <TableData key={employee.id.value} value={employee}/>
     })
@@ -70,12 +71,38 @@ function Table() {
       </form>
       <table>
         <thead>
-          <th scope="col">Photo</th>
-          <th scope="col">Name</th>
-          <th scope="col">City, State</th>
-          <th scope="col">Country</th>
-          <th scope="col">Email</th>
-          <th scope="col">Phone Number</th>
+          <tr>
+            <th scope="col">
+              <button type="button">
+                Photo
+              </button>
+            </th>
+            <th scope="col">
+              <button type="button">
+                Name
+              </button>
+            </th>
+            <th scope="col">
+              <button type="button">
+                City, State
+              </button>
+            </th>
+            <th scope="col">
+              <button type="button">
+                Country
+              </button>
+            </th>
+            <th scope="col">
+              <button type="button">
+                Email
+              </button>
+            </th>
+            <th scope="col">
+              <button type="button">
+                Phone
+              </button>
+            </th>
+          </tr>
         </thead>
         <tbody>{tableDatas}</tbody>
       </table>
