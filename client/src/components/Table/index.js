@@ -15,7 +15,8 @@ function Table() {
         filteredData: results.data.results,
       });
     });
-  }, [tableState.employees.length === 0]);
+  }, []);
+
 
   const handleSearchChange = (event) => {
     const userFilter = event.target.value;
