@@ -1,18 +1,22 @@
 import React from "react";
 
 function TableData(props) {
-  console.log(props.value);
+  const { thumbnail } = props.value.picture;
+  const { first, last } = props.value.name;
+  const { email, phone } = props.value;
+  const { country } = props.value.location;
+  const { date } = props.value.dob;
   return (
     <React.Fragment>
       <tr>
         <td>
-          <img src={props.value.picture.thumbnail}></img>
+          <img src={thumbnail} alt={`${first} ${last}`}></img>
         </td>
-        <td>{props.value.name.first} {props.value.name.last}</td>
-        <td>{props.value.location.country}</td>
-        <td>{props.value.email}</td>
-        <td>{props.value.phone}</td>
-        <td>{props.value.dob.date}</td>
+        <td>{first} {last}</td>
+        <td>{country}</td>
+        <td>{email}</td>
+        <td>{phone}</td>
+        <td>{date}</td>
       </tr>
     </React.Fragment>
   );
