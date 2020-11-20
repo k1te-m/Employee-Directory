@@ -9,8 +9,9 @@ function Table() {
   const [tableState, setTableState] = useState({
     employees: [],
     filteredData: [],
+    sortedData: []
   });
-  const [sortedField, setSortedField] = useState(null);
+  
 
   useEffect(() => {
     API.getEmployees().then((results) => {
@@ -41,7 +42,20 @@ function Table() {
       })
     }
   };
+  
 
+  const sortName = () => {
+    const sort = [...tableState.employees].sort(function(a, b) {
+      let nameA=a.name.first.toLowerCase(), nameB = b.name.first.toLowerCase();
+      if (nameA < nameB)
+        return -1;
+      if (nameA > nameB)
+        return 1;
+      return 0;
+    });
+    console.log(sort);
+    setTableState({...tableState, employees: sort, filteredData: sort, sortedData: sort})
+  }
   
   
   // Conditional statement for if userFilter, map filteredData, if no filter map tablestate.employees
@@ -53,7 +67,7 @@ function Table() {
     tableDatas = tableState.employees.map((employee) => {
       return <TableData key={employee.id.value} value={employee}/>
     })
-  }
+  } 
 
   return (
     <div className="container">
@@ -78,7 +92,7 @@ function Table() {
               </button>
             </th>
             <th scope="col">
-              <button type="button">
+              <button type="button" onClick={sortName}>
                 Name
               </button>
             </th>
