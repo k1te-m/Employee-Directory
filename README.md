@@ -34,7 +34,7 @@
 
   ## Future Development
 
-  For future development, I would like to implement sort functionality on all fields of the table, along with the ability to search and filter based on the different fields. I would also like to implement more advanced CSS to polish the application. 
+  For future development, I would like to implement sort functionality on all fields of the table, along with the ability to search and filter based on the different fields. I would also like to implement more advanced CSS to polish the application. I would also like to implement hooks and other React tools that we learned about after beginning this project.
 
   ## Tests
 
