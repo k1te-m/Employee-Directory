@@ -1,5 +1,6 @@
 import React from "react";
 
+// Destructuring props for easier use in return statement
 function TableData(props) {
   const { thumbnail } = props.value.picture;
   const { first, last } = props.value.name;
