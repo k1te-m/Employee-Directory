@@ -1,10 +1,12 @@
+// Dependencies
 import React, { useState, useEffect } from "react";
 import API from "../../utils/API";
 import TableData from "../TableData";
 
-
+// establish tableDatas variable
 let tableDatas;
 
+// functional component Table
 function Table() {
   const [tableState, setTableState] = useState({
     employees: [],
@@ -12,7 +14,7 @@ function Table() {
     sortedData: []
   });
   
-
+  // on load of the component, execute an API call to retrieve employee information, then set state to equal those results and do not run again
   useEffect(() => {
     API.getEmployees().then((results) => {
       setTableState({
@@ -22,14 +24,17 @@ function Table() {
     });
   }, []);
 
-
+  // method to handle search input
   const handleSearchChange = (event) => {
+    // userFilter captures search input
     const userFilter = event.target.value;
+    // filter over the employees array and return array containing any that return true 
     const filteredEmps = tableState.employees.filter((emps) => {
       let values = emps.name.first.toLowerCase();
+      // returns true or false based on if employee first name contains the userFilter
       return values.indexOf(userFilter.toLowerCase()) !== -1;
     });
-
+    //Set filteredData state to filteredEmps
     if (userFilter === "") {
       setTableState({
         ...tableState,
@@ -43,7 +48,7 @@ function Table() {
     }
   };
   
-
+  // Sort name function based on the employee first names. Sorts the tableState employees then compares first names and puts into ascending order
   const sortName = () => {
     const sort = [...tableState.employees].sort(function(a, b) {
       let nameA=a.name.first.toLowerCase(), nameB = b.name.first.toLowerCase();
@@ -53,7 +58,7 @@ function Table() {
         return 1;
       return 0;
     });
-    console.log(sort);
+    // When executed set all tableStates to the sorted array
     setTableState({...tableState, employees: sort, filteredData: sort, sortedData: sort})
   }
   
