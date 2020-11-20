@@ -11,11 +11,11 @@ function TableData(props) {
         <td>
           <img src={thumbnail} alt={`${first} ${last}`}></img>
         </td>
-        <td>{first} {last}</td>
-        <td>{city}, {state}</td>
-        <td>{country}</td>
-        <td>{email}</td>
-        <td>{phone}</td>
+        <td className="align-middle">{first} {last}</td>
+        <td className="align-middle">{city}, {state}</td>
+        <td className="align-middle">{country}</td>
+        <td className="align-middle">{email}</td>
+        <td className="align-middle">{phone}</td>
       </tr>
     </React.Fragment>
   );

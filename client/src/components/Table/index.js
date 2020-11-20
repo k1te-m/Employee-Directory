@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import API from "../../utils/API";
 import TableData from "../TableData";
+import "./style.css"
 
 // establish tableDatas variable
 let tableDatas;
@@ -77,54 +78,56 @@ function Table() {
   return (
     <div className="container">
       <form
-        className="form-inline"
+        className="form"
         onSubmit={(event) => event.preventDefault()}
       >
-        <label>Search:</label>
         <input
           type="text"
           className="form-control"
           id="search"
           onChange={handleSearchChange}
+          placeholder="Search"
         ></input>
       </form>
-      <table>
-        <thead>
-          <tr>
-            <th scope="col">
-              <button type="button">
-                Photo
-              </button>
-            </th>
-            <th scope="col">
-              <button type="button" onClick={sortName}>
-                Name
-              </button>
-            </th>
-            <th scope="col">
-              <button type="button">
-                City, State
-              </button>
-            </th>
-            <th scope="col">
-              <button type="button">
-                Country
-              </button>
-            </th>
-            <th scope="col">
-              <button type="button">
-                Email
-              </button>
-            </th>
-            <th scope="col">
-              <button type="button">
-                Phone
-              </button>
-            </th>
-          </tr>
-        </thead>
-        <tbody>{tableDatas}</tbody>
-      </table>
+      <div className="table-responsive">
+        <table className="table table-striped table-bordered table-sm">
+          <thead>
+            <tr>
+              <th scope="col-2">
+                <button type="button">
+                  Photo
+                </button>
+              </th>
+              <th scope="col-2">
+                <button type="button" onClick={sortName}>
+                  Name
+                </button>
+              </th>
+              <th scope="col-2">
+                <button type="button">
+                  City, State
+                </button>
+              </th>
+              <th scope="col-2">
+                <button type="button">
+                  Country
+                </button>
+              </th>
+              <th scope="col-2">
+                <button type="button">
+                  Email
+                </button>
+              </th>
+              <th scope="col-2">
+                <button type="button">
+                  Phone
+                </button>
+              </th>
+            </tr>
+          </thead>
+          <tbody>{tableDatas}</tbody>
+        </table>
+      </div>
     </div>
   );
 }
