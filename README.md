@@ -3,7 +3,7 @@
   ![GitHub](https://img.shields.io/github/license/k1te-m/Employee-Directory)![GitHub top language](https://img.shields.io/github/languages/top/k1te-m/Employee-Directory)
 
   ## Descripton
-  An employee directory for employees or managers to be able to quickly view non-sensitive information about their colleagues. The directory allows users to filter by name using the search bar and also allows the table to be sorted by name.
+  A React application that acts as an employee directory for employees or managers to be able to quickly view non-sensitive information about their colleagues. The directory allows users to filter by name using the search bar and also allows the table to be sorted by name.
 
   ## Table of Contents
   * [Installation](#installation)
@@ -22,13 +22,19 @@
 
   *Examples of project use:*
 
-  Will Update
+  [fierce-falls-06822.herokuapp.com/](https://fierce-falls-06822.herokuapp.com/)
+
+  ![DEMO](client/public/demo.gif)
 
   ## Contributing
 
   *If you are interested in contributing to this project, please follow the below instructions:*
 
   Pull requests not welcome at this time. 
+
+  ## Future Development
+
+  For future development, I would like to implement sort functionality on all fields of the table, along with the ability to search and filter based on the different fields. I would also like to implement more advanced CSS to polish the application. 
 
   ## Tests
 
